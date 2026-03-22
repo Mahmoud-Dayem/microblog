@@ -20,6 +20,7 @@ def create_app():
     @app.route("/")
     def home():
         entries = list(entries_collection.find().sort("timestamp", -1))
+        
         return render_template("home.html", entries=entries)
 
 
