@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block header %}
+<header class="navbar">
+      <div class="navbar__brand">
+        <img
+          class="navbar__logo"
+          src="{{ url_for('static', filename='css/logo.svg') }}"
+          alt="The Microblog logo"
+        />Microblog
+      </div>
+ 
+      <ul class="navbar__navigation">
+        <li class="navbar__navigation-item">
+          <a href="#" class="navbar__link">Recent</a>
+        </li>
+        <li class="navbar__navigation-item">
+          <a href="#" class="navbar__link">Calendar</a>
+        </li>
+      </ul>
+    </header>
+{% endblock header %}

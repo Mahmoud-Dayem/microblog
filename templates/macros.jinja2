@@ -1,0 +1,9 @@
+{% macro render_button(text, color) %}
+    <button 
+    style="background: {{ color }}; padding: 10px;"
+    onclick=handleclick('{{text}}')
+    
+    >
+        {{ text }}
+    </button>
+{% endmacro %}

@@ -19,9 +19,16 @@ def create_app():
 
     @app.route("/")
     def home():
+        
         entries = list(entries_collection.find().sort("timestamp", -1))
         
         return render_template("home.html", entries=entries)
+    @app.route("/signin")
+    def signin():
+        
+ 
+        
+        return render_template("signin.html")
 
 
     @app.route("/entry", methods=["POST"])
@@ -30,6 +37,18 @@ def create_app():
         if content:
             entries_collection.insert_one({"content": content, "timestamp": datetime.utcnow()})
         return redirect(url_for("home"))
+    
+    @app.context_processor
+    def get_latest_post():
+        entries = [1,2,3,4,5,6,7]
+        return {"latest":entries,
+                "username":"Mazen"}
+    
+    # // global function in contecxt saved in envrioment
+    @app.template_filter("format_currency")
+    def format_currency(value,currency):
+        return f"{value:0.2f}:{currency}"
+            
 
 
     if __name__ == "__main__":
